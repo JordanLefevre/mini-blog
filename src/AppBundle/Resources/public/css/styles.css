@@ -41,3 +41,15 @@ body {
 #submit i{
     background-color:#1e7068;
 }
+
+#submit i:hover{
+    background-color:#218c81;
+}
+
+a.btn.red:hover {
+    background-color:#ed5d53 !important;
+}
+
+#content-label label{
+    top:-10px;
+}

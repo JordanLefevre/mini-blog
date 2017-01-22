@@ -23,8 +23,7 @@ class ArticleType extends AbstractType
                 ))
                 ->add('content', TextareaType::class, array(
                     'label'  => 'Contenu',
-                    'attr'=> array('class'=>'tinymce',
-                                   'data-theme' => 'simple')
+                    'attr'=> array('class'=>'tinymce')
                 ))
                 ->add('author', TextType::class, array(
                     'label'  => 'Auteur',

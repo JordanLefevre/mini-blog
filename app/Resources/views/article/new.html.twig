@@ -17,7 +17,13 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s10 offset-s1">
-                            {{ form_row(form.content) }}
+                            <div class="row" id="content-label">
+                                {{ form_label(form.content) }}
+                            </div>
+                            <div class="row">
+                                {{ form_widget(form.content) }}
+                                {{ form_errors(form.content) }}
+                            </div>                        
                         </div>
                     </div>
                     <div class="row">
@@ -41,11 +47,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s5 m4 l3" id="submit">
-                        <input type="submit" class="waves-effect waves-light btn col s12" value="Créer" />
-                    </div>
-                    <div class="col s5 m4 l3 right">
+                    <div class="col s5 m4 l3">
                         <a href="{{ path('administration_article_index') }}" class="waves-effect waves-light btn red col s12">Retour</a>
+                    </div>
+                    <div class="col s5 m4 l3 right" id="submit">
+                        <input type="submit" class="waves-effect waves-light btn col s12" value="Créer" />                        
                     </div>
                 </div>
             {{ form_end(form) }} 

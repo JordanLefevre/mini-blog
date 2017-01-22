@@ -129,7 +129,7 @@ stfalcon_tinymce:
         language: %locale%
         theme:
             simple:
-                content_css: "asset[AppBundle/Resources/public/css/tinymce-content.css]"
+                content_css: "asset[bundles/AppBundle/public/css/tinymce-content.css]"
             # Advanced theme with almost all enabled plugins
             advanced:
                  plugins:

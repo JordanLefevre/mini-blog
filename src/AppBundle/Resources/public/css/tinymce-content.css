@@ -1,3 +1,57 @@
-.input-field div * {
+.mce-btn i {
+    text-shadow: 0px 0px !important;
+}
+
+.input-field div .mce-caret {
+    border-color:#1e7068;
+    border-top-color:white;
+}
+
+#mceu_13 {
+    border-color:#1e7068;
+    width:97%;
+    margin-left:1.5%;
+}
+
+#mceu_13 * {
     background-color:#1e7068;
+    opacity:1;
+}
+
+#mceu_13 button span {
+    color:white;
+}
+
+#mceu_30 i.mce-i-resize {
+    color:white;
+}
+
+#mceu_20-body * {
+    border:none;
+}
+
+#mceu_14-body .mce-widget.mce-btn.mce-menubtn.mce-flow-layout-item {
+    border-right:1px solid white;
+}
+
+#mceu_14-body .mce-widget.mce-btn.mce-menubtn.mce-flow-layout-item:last-child {
+    border:none;
+}
+
+.mce-menu-item .mce-text {
+    font-family: "Century Gothic", CenturyGothic;
+}
+
+#mceu_14-body .mce-widget.mce-btn.mce-menubtn.mce-flow-layout-item span {
+    font-family: "Century Gothic", CenturyGothic;
+}
+
+#mceu_22, #mceu_29 div {
+    visibility: hidden;
+    display:none;
+}
+
+#mceu_23 {
+    margin-left:6px;
+    border-left:1px solid white;
 }
