@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row form-title"> 
+        <div class="col s12">
+            <h1>Nouvel article</h1>
+        </div>
+    </div>
+    <div class="row form-content">
+        <div class="col s12">
+            {{ form_start(form) }}
+                <div class="row">
+                    <div class="row">
+                        <div class="input-field col s10 offset-s1">
+                            {{ form_row(form.name) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s10 offset-s1">
+                            {{ form_row(form.content) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s10 offset-s1">
+                            {{ form_row(form.author) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s10 offset-s1">
+                            {{ form_widget(form.category) }}
+                            {{ form_errors(form.category) }}
+                            {{ form_label(form.category) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s10 offset-s1">
+                            {{ form_widget(form.tags) }}
+                            {{ form_errors(form.tags) }}
+                            {{ form_label(form.tags) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s5 m4 l3" id="submit">
+                        <input type="submit" class="waves-effect waves-light btn col s12" value="Créer" />
+                    </div>
+                    <div class="col s5 m4 l3 right">
+                        <a href="{{ path('administration_article_index') }}" class="waves-effect waves-light btn red col s12">Retour</a>
+                    </div>
+                </div>
+            {{ form_end(form) }} 
+        </div>
+    </div>
+   {{ tinymce_init() }}
+{% endblock %}

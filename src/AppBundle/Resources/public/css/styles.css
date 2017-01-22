@@ -1,0 +1,43 @@
+body {
+    font-family: "Century Gothic", CenturyGothic;
+    height:100%;
+}
+
+.global {
+    height:100%;
+}
+
+.global > .row {
+    margin:0;
+}
+
+.form-title {
+    background-color:#1e7068;
+    text-align:center;
+    margin:0;
+}
+
+.form-title h1 {
+    color:white;
+}
+
+.form-content {
+    box-shadow: inset 0 10px 15px -10px black;
+    background-color:#26a69a;
+    padding-right:20px;
+    padding-left:20px;
+    color:white;
+    margin:0;   
+}
+
+.input-field div *,
+.input-field label,
+.input-field .select-wrapper .select-dropdown,
+.input-field .select-wrapper .caret {
+    color:white;
+    border-color:white;
+}
+
+#submit i{
+    background-color:#1e7068;
+}

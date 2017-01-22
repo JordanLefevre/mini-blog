@@ -6,7 +6,7 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
 
 framework:
     #esi:             ~
@@ -68,3 +68,83 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: '%kernel.debug%'
+    assets:
+        roboto-bold-ttf:
+            inputs: '@AppBundle/Resources/public/fonts/roboto/Roboto-Bold.ttf'
+            output: 'font/roboto/Roboto-Bold.ttf'
+        roboto-bold-woff:
+            inputs: '@AppBundle/Resources/public/fonts/roboto/Roboto-Bold.woff'
+            output: 'font/roboto/Roboto-Bold.woff'
+        roboto-bold-woff2:
+            inputs: '@AppBundle/Resources/public/fonts/roboto/Roboto-Bold.woff2'
+            output: 'font/roboto/Roboto-Bold.woff2'
+        roboto-light-ttf:
+            inputs: '@AppBundle/Resources/public/fonts/roboto/Roboto-Light.ttf'
+            output: 'font/roboto/Roboto-Light.ttf'
+        roboto-light-woff:
+            inputs: '@AppBundle/Resources/public/fonts/roboto/Roboto-Light.woff'
+            output: 'font/roboto/Roboto-Light.woff'
+        roboto-light-woff2:
+            inputs: '@AppBundle/Resources/public/fonts/roboto/Roboto-Light.woff2'
+            output: 'font/roboto/Roboto-Light.woff2'
+        roboto-medium-ttf:
+            inputs: '@AppBundle/Resources/public/fonts/roboto/Roboto-Medium.ttf'
+            output: 'font/roboto/Roboto-Medium.ttf'
+        roboto-medium-woff:
+            inputs: '@AppBundle/Resources/public/fonts/roboto/Roboto-Medium.woff'
+            output: 'font/roboto/Roboto-Medium.woff'
+        roboto-medium-woff2:
+            inputs: '@AppBundle/Resources/public/fonts/roboto/Roboto-Medium.woff2'
+            output: 'font/roboto/Roboto-Medium.woff2'
+        roboto-regular-ttf:
+            inputs: '@AppBundle/Resources/public/fonts/roboto/Roboto-Regular.ttf'
+            output: 'font/roboto/Roboto-Regular.ttf'
+        roboto-regular-woff:
+            inputs: '@AppBundle/Resources/public/fonts/roboto/Roboto-Regular.woff'
+            output: 'font/roboto/Roboto-Regular.woff'
+        roboto-regular-woff2:
+            inputs: '@AppBundle/Resources/public/fonts/roboto/Roboto-Regular.woff2'
+            output: 'font/roboto/Roboto-Regular.woff2'
+        roboto-thin-ttf:
+            inputs: '@AppBundle/Resources/public/fonts/roboto/Roboto-Thin.ttf'
+            output: 'font/roboto/Roboto-Thin.ttf'
+        roboto-thin-woff:
+            inputs: '@AppBundle/Resources/public/fonts/roboto/Roboto-Thin.woff'
+            output: 'font/roboto/Roboto-Thin.woff'
+        roboto-thin-woff2:
+            inputs: '@AppBundle/Resources/public/fonts/roboto/Roboto-Thin.woff2'
+            output: 'font/roboto/Roboto-Thin.woff2'
+    filters:
+        cssrewrite: ~
+
+stfalcon_tinymce:
+        include_jquery: true
+        tinymce_jquery: true
+        selector: ".tinymce"
+        language: %locale%
+        theme:
+            simple:
+                content_css: "asset[AppBundle/Resources/public/css/tinymce-content.css]"
+            # Advanced theme with almost all enabled plugins
+            advanced:
+                 plugins:
+                     - "advlist autolink lists link image charmap print preview hr anchor pagebreak"
+                     - "searchreplace wordcount visualblocks visualchars code fullscreen"
+                     - "insertdatetime media nonbreaking save table contextmenu directionality"
+                     - "emoticons template paste textcolor"
+                 toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+                 toolbar2: "print preview media | forecolor backcolor emoticons | stfalcon | example"
+                 image_advtab: true
+                 templates:
+                     - {title: 'Test template 1', content: 'Test 1'}
+                     - {title: 'Test template 2', content: 'Test 2'}
+            # BBCode tag compatible theme (see http://www.bbcode.org/reference.php)
+            bbcode:
+                 plugins: ["bbcode, code, link, preview"]
+                 menubar: false
+                 toolbar1: "bold,italic,underline,undo,redo,link,unlink,removeformat,cleanup,code,preview"

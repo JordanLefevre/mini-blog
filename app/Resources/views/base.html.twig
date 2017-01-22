@@ -3,11 +3,40 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}       
+            {% stylesheets
+                '@AppBundle/Resources/public/css/materialize.min.css'
+                '@AppBundle/Resources/public/css/jquery-ui.min.css'
+                '@AppBundle/Resources/public/css/styles.css'
+            %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        <div class="container global">
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+        </div>
+        {% block javascripts %}
+            {% javascripts
+                '@AppBundle/Resources/public/js/jquery.min.js'
+                '@AppBundle/Resources/public/js/jquery-ui.min.js'
+                '@AppBundle/Resources/public/js/materialize.min.js'
+            %}
+
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+
+            <script>
+                $(document).ready(function() {
+                    $('select').material_select();
+                });
+            </script>
+        {% endblock %}
     </body>
 </html>
