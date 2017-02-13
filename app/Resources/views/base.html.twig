@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Mini-Blog{% endblock %}</title>
-        {% block stylesheets %}       
+        {% block stylesheets %}
             {% stylesheets
                 '@AppBundle/Resources/public/css/materialize.min.css'
                 '@AppBundle/Resources/public/css/jquery-ui.min.css'
@@ -26,7 +26,7 @@
                     <li {% if app.request.attributes.get('_route') starts with 'administration_category' %}class="active"{% endif %}><a href="/administration/category">Catégories</a></li>
                     <li {% if app.request.attributes.get('_route') starts with 'administration_tag' %}class="active"{% endif %}><a href="/administration/tag">Tags</a></li>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <li><a class="tooltipped" href="/logout" data-position="left" data-delay="20" data-tooltip="Déconnexion"><i class="material-icons">exit_to_app</i></a></li>
+                        <li><a class="tooltipped" href="{{url('logout')}}" data-position="left" data-delay="20" data-tooltip="Déconnexion"><i class="material-icons">exit_to_app</i></a></li>
                     {% endif %}
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
@@ -35,7 +35,7 @@
                     <li {% if app.request.attributes.get('_route') starts with 'administration_tag' %}class="active"{% endif %}><a href="/administration/tag">Tags</a></li>
                     <li class="divider"></li>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <li><a href="/logout">Se déconnecter</a></li>
+                        <li><a href="{{url('logout')}}">Se déconnecter</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -61,7 +61,7 @@
             <script>
                 $(document).ready(function() {
                     $('select').material_select();
-                });                
+                });
             </script>
         {% endblock %}
     </body>

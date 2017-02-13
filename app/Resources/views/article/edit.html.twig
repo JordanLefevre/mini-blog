@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="row form-title"> 
+    <div class="row form-title">
         <div class="col s12">
             <h1>Édition article</h1>
         </div>
@@ -23,12 +23,7 @@
                             <div class="row">
                                 {{ form_widget(edit_form.content) }}
                                 {{ form_errors(edit_form.content) }}
-                            </div>                        
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s10 offset-s1">
-                            {{ form_row(edit_form.author) }}
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -56,11 +51,11 @@
                     <div class="col s12 m4 l2">
                         <a href="{{ path('administration_article_index') }}" class="waves-effect waves-light btn teal darken-3 col s12">Retour</a>
                     </div>
-                    <div class="col s12 m8 l4 right" id="submit">   
-                        <input type="submit" class="waves-effect waves-light btn col s12 m6 l5 right" value="Modifier" />               
+                    <div class="col s12 m8 l4 right" id="submit">
+                        <input type="submit" class="waves-effect waves-light btn col s12 m6 l5 right" value="Modifier" />
                     </div>
                 </div>
-            {{ form_end(edit_form) }} 
+            {{ form_end(edit_form) }}
             <div class="row">
                 <div class="col s12 m4 l2">
                     {{ form_start(delete_form) }}
@@ -71,4 +66,31 @@
         </div>
     </div>
    {{ tinymce_init() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $('.datepicker').pickadate({
+            monthsFull: [ 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ],
+            monthsShort: [ 'Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec' ],
+            weekdaysFull: [ 'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi' ],
+            weekdaysShort: [ 'Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam' ],
+            today: 'Aujourd\'hui',
+            clear: 'Effacer',
+            close: 'Fermer',
+            firstDay: 1,
+            format: 'dd mmmm yyyy',
+            formatSubmit: 'yyyy-mm-dd',
+            labelMonthNext:"Mois suivant",
+            labelMonthPrev:"Mois précédent",
+            labelMonthSelect:"Sélectionner un mois",
+            labelYearSelect:"Sélectionner une année",
+            selectMonths: true,
+            selectYears: 3,
+            min: new Date()
+        });
+        $('.datepicker').pickadate().pickadate('picker').set('select', new Date());
+    </script>
 {% endblock %}

@@ -7,6 +7,24 @@ nav {
     background-color:#26a69a;
 }
 
+#mobile-demo {
+    background-color:#ddd;
+}
+
+#mobile-demo #form-search {
+    height:64px;
+    background-color: white;
+}
+
+#form-search i {
+    color: #212121;
+}
+
+li.divider {
+    background-color:rgba(0,0,0,0.4);
+    margin:0 !important;
+}
+
 /*
  *
  *  Général
@@ -49,7 +67,7 @@ body {
 }
 
 #lastArticles .collection-item {
-    min-height: 200px;
+    padding:10px 20px 0px 30px;
     position:relative;
 }
 
@@ -61,4 +79,31 @@ body {
 
 #lastArticles .title {
     word-wrap: break-word;
+    margin:0;
+}
+
+#lastArticles .content {
+    margin:5px 0 0 0;
+}
+
+#lastArticles .content a{
+    color:#26a69a;
+}
+
+#lastArticles .category {
+    color: #26a69a;
+    font-size:1.1em;
+}
+
+#lastArticles .tags {
+    margin:10px 0 5px 0;
+}
+
+.tags .chip {
+    background-color: #26a69a;
+    color:white;
+}
+
+.collection-item .content-item {
+    width:93%;
 }

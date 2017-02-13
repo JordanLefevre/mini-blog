@@ -12,9 +12,11 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
     public function getLastArticles()
     {
-        $qb = $this->createQueryBuilder('n'); 
-        $qb->orderBy('n.publicationDate', 'DESC')
-           ->setMaxResults(5);
+        $qb = $this->createQueryBuilder('n');
+        $qb ->where('n.publicationDate <= :now')
+            ->setParameter('now', new \DateTime('now'))
+            ->orderBy('n.publicationDate', 'DESC')
+            ->setMaxResults(5);
         return $qb->getQuery()
                    ->getResult();
     }

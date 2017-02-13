@@ -3,25 +3,27 @@
 {% block body %}
     <div class="row" id="lastArticles">
         <ul class="collection with-header">
-            <li class="collection-header"><h4>Les derniers articles</h4></li>
-            {% for article in lastArticles %}           
+            <li class="collection-header"><div class="row"><h4 class="col s12 m7 l8">Les derniers articles</h4><a class="waves-effect waves-light btn col s12 m5 l4">Tous les articles</a></div></li>
+            {% for article in lastArticles %}
                 <li class="collection-item">
-                    <div>
+                    <div class="content-item">
+                        <div class="category"><b>{{ article.category.name }}</b></div>
                         <h5 class="title">{{ article.name }}</h5>
-                        <div><i>Catégorie : {{ article.category.name }}</i></div>
-                        <div><i>Publié le {{ article.publicationDate | date('d/m/Y') }}</i></div>
-                        <div><i>Par {{ article.author }}</i></div>
-                        {% for tag in article.tags %}
-                            <div class="chip">
-                                {{ tag.name }}
-                            </div>
-                        {% endfor %}
+                        <div class="content">{{ article.content | striptags[:300]}}... <a href="#"><i>Voir plus</i></a></div>
+                        <div class="tags">
+                            {% for tag in article.tags %}
+                                <div class="chip">
+                                    {{ tag.name }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div><i>Le {{ article.publicationDate | date('d/m/Y') }}, par {{ article.author }}</i></div>
                     </div>
                     <a href="#!" class="secondary-content">
                         <i class="material-icons tooltipped"  data-position="right" data-delay="20" data-tooltip="Voir l'article">send</i>
                     </a>
-                </li> 
+                </li>
             {% endfor %}
-        </ul>  
+        </ul>
     </div>
 {% endblock %}
