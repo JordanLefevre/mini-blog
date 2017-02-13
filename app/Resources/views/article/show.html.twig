@@ -1,44 +1,64 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Article</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ article.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ article.name }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ article.content }}</td>
-            </tr>
-            <tr>
-                <th>Author</th>
-                <td>{{ article.author }}</td>
-            </tr>
-            <tr>
-                <th>Publicationdate</th>
-                <td>{% if article.publicationDate %}{{ article.publicationDate|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('administration_article_index') }}">Retour à la liste</a>
-        </li>
-        <li>
-            <a href="{{ path('administration_article_edit', { 'id': article.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="row form-title"> 
+        <div class="col s12">
+            <h1>Article</h1>
+        </div>
+    </div>
+    <div class="row form-content">
+        <div class="col s12">
+            <table class="table-show">
+                <tbody>
+                    <tr>
+                        <th class="th-show">Id</th>
+                        <td class="td-show">{{ article.id }}</td>
+                    </tr>
+                    <tr>
+                        <th class="th-show">Titre</th>
+                        <td class="td-show">{{ article.name }}</td>
+                    </tr>
+                    <tr>
+                        <th class="th-show">Catégorie</th>
+                        <td class="td-show">{{ article.category.name }}</td>
+                    </tr>
+                    <tr>
+                        <th class="th-show">Contenu</th>
+                        <td class="td-show">{{ article.content | raw}}</td>
+                    </tr>
+                    <tr>
+                        <th class="th-show">Tags</th>
+                        <td class="td-show">
+                            {% for tag in article.tags %}           
+                                {{ tag.name }} {% if not loop.last %}, {% endif %}           
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="th-show">Auteur</th>
+                        <td class="td-show">{{ article.author }}</td>
+                    </tr>
+                    <tr>
+                        <th class="th-show">Date</th>
+                        <td class="td-show">{% if article.publicationDate %}{{ article.publicationDate|date('d-m-Y') }}{% endif %}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row" style="margin-bottom:0">
+                <div class="col s12 m4 l2">
+                    <a href="{{ path('administration_article_index') }}" class="waves-effect waves-light btn teal darken-3 col s12">Retour</a>
+                </div>
+                <div class="col s12 m8 l4 right" id="submit">   
+                    <a href="{{ path('administration_article_edit', { 'id': article.id }) }}" class="waves-effect waves-light btn col s12 m6 l5 right teal darken-3">Modifier</a>            
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m4 l2">
+                    {{ form_start(delete_form) }}
+                        <input type="submit" class="waves-effect waves-light btn col s12 red" value="Supprimer">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

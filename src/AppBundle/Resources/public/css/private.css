@@ -1,0 +1,189 @@
+/*
+ *
+ *  Navbar
+ *
+ */
+nav {
+    background-color:#26a69a;
+}
+
+#mobile-demo {
+    background-color:#ddd;
+}
+
+#mobile-demo li.active{
+    background-color:#26a69a;
+}
+
+#mobile-demo li.active a{
+    color:white !important;
+}
+
+li.divider {
+    background-color:rgba(0,0,0,0.4);
+    margin:0 !important;
+}
+
+/*
+ *
+ *  Collections
+ *
+ */
+.collection {
+    color:#212121;
+    max-height:200px;
+    overflow:auto;
+    border:none;
+    margin-top:15px;
+}
+
+.collection-header {
+    border:none;
+    background-color:#1e7068 !important;
+    color:white !important;
+}
+
+/*
+ *
+ *  Table
+ *
+ */
+table ul {
+    margin:0;
+}
+
+table ul li a{
+    margin-bottom:3px !important;
+    margin-top:3px !important;
+}
+
+.th-show {
+    width:130px;
+    background-color:#1e7068;
+    border-radius:0;
+    text-align:center;
+}
+
+.td-show {
+    background-color:white;
+    color:black;
+}
+
+.table-show {
+    margin:20px 0 20px 0;
+}
+
+.table-show tr {
+    border:1px solid rgba(200,200,200,0.4);
+}
+
+/*
+ *
+ *  Général
+ *
+ */
+body {
+    font-family: "Century Gothic", CenturyGothic;
+    background-color: rgb(230,230,230);
+    height:100%;
+}
+
+.global {
+    height:100%;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+.global > .row {
+    margin:0;
+}
+
+/*
+ *
+ *  Formulaires
+ *
+ */
+form {
+    margin-top:15px;
+}
+
+.form-title {
+    background-color:#1e7068;
+    text-align:center;
+    margin:0;
+}
+
+.form-title h1 {
+    color:white;
+}
+
+.form-content {
+    box-shadow: inset 0 10px 15px -10px black;
+    background-color:#26a69a;
+    padding-right:20px;
+    padding-left:20px;
+    color:white;
+    margin:0;  
+}
+
+.input-field div *,
+.input-field label,
+.input-field .select-wrapper .select-dropdown,
+.input-field .select-wrapper .caret {
+    color:white;
+    border-color:white;
+}
+
+#submit i{
+    background-color:#1e7068;
+}
+
+#submit i:hover{
+    background-color:#218c81;
+}
+
+.red:hover {
+    background-color:#ed5d53 !important;
+}
+
+#content-label label{
+    top:-10px;
+}
+
+.add-button a {
+    margin-top:15px;
+    height:60px;
+    line-height: 60px;
+}
+
+.add-button a:hover {
+    background-color:#00796b !important;
+}
+
+.details-button:hover {
+    background-color:#4dd0e1 !important;
+}
+
+.datepicker {
+    border-bottom: 1px solid white !important;
+}
+
+.picker__box {
+    border:none !important;
+}
+
+.picker__day--infocus {
+    color:#595959 !important;
+}
+
+.picker__weekday {
+    color: #999999 !important;
+}
+
+.picker__select--year.browser-default, .picker__select--year.browser-default option{
+    color: black !important;
+}
+
+.picker__select--month.browser-default, .picker__select--month.browser-default option{
+    color: black !important;
+}

@@ -1,28 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Tags list</h1>
-
-    <table>
+    <div class="row form-title"> 
+        <div class="col s12">
+            <h1>Liste des tags</h1>
+        </div>
+    </div>
+    <table class="bordered highlight responsive-table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Actions</th>
+                <th>Nom</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
         {% for tag in tags %}
             <tr>
-                <td><a href="{{ path('administration_tag_show', { 'id': tag.id }) }}">{{ tag.id }}</a></td>
+                <td>{{ tag.id }}</td>
                 <td>{{ tag.name }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('administration_tag_show', { 'id': tag.id }) }}">show</a>
+                            <a href="{{ path('administration_tag_show', { 'id': tag.id }) }}" class="details-button cyan lighten-1 waves-effect waves-light btn col s12 l6 offset-l6">Voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('administration_tag_edit', { 'id': tag.id }) }}">edit</a>
+                            <a href="{{ path('administration_tag_edit', { 'id': tag.id }) }}" class="waves-effect waves-light btn col s12 l6 offset-l6">Modifier</a>
                         </li>
                     </ul>
                 </td>
@@ -30,10 +33,7 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('administration_tag_new') }}">Create a new tag</a>
-        </li>
-    </ul>
+    <div class="col s12 add-button">
+        <a href="{{ path('administration_tag_new') }}" class="teal darken-3 waves-effect waves-light btn col s8 offset-s2">Créer un nouveau tag</a>
+    </div>
 {% endblock %}

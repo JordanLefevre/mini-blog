@@ -2,23 +2,47 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Mini-Blog{% endblock %}</title>
         {% block stylesheets %}       
             {% stylesheets
                 '@AppBundle/Resources/public/css/materialize.min.css'
                 '@AppBundle/Resources/public/css/jquery-ui.min.css'
-                '@AppBundle/Resources/public/css/styles.css'
+                '@AppBundle/Resources/public/css/private.css'
                 '@AppBundle/Resources/public/css/tinymce-content.css'
             %}
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="/administration/article" class="brand-logo">Mini-Blog</a>
+                <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li {% if app.request.attributes.get('_route') starts with 'administration_article' %}class="active"{% endif %}><a href="/administration/article">Articles</a></li>
+                    <li {% if app.request.attributes.get('_route') starts with 'administration_category' %}class="active"{% endif %}><a href="/administration/category">Catégories</a></li>
+                    <li {% if app.request.attributes.get('_route') starts with 'administration_tag' %}class="active"{% endif %}><a href="/administration/tag">Tags</a></li>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li><a class="tooltipped" href="/logout" data-position="left" data-delay="20" data-tooltip="Déconnexion"><i class="material-icons">exit_to_app</i></a></li>
+                    {% endif %}
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li {% if app.request.attributes.get('_route') starts with 'administration_article' %}class="active"{% endif %}><a href="/administration/article">Articles</a></li>
+                    <li {% if app.request.attributes.get('_route') starts with 'administration_category' %}class="active"{% endif %}><a href="/administration/category">Catégories</a></li>
+                    <li {% if app.request.attributes.get('_route') starts with 'administration_tag' %}class="active"{% endif %}><a href="/administration/tag">Tags</a></li>
+                    <li class="divider"></li>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li><a href="/logout">Se déconnecter</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
         <div class="container global">
             <div class="row">
-                <div class="col s10 offset-s1">
+                <div class="col s10 offset-s1 z-depth-5" style="background:white">
                     {% block body %}{% endblock %}
                 </div>
             </div>
@@ -28,6 +52,7 @@
                 '@AppBundle/Resources/public/js/jquery.min.js'
                 '@AppBundle/Resources/public/js/jquery-ui.min.js'
                 '@AppBundle/Resources/public/js/materialize.min.js'
+                '@AppBundle/Resources/public/js/script.js'
             %}
 
             <script src="{{ asset_url }}"></script>

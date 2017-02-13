@@ -45,12 +45,18 @@
                             {{ form_label(form.tags) }}
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="input-field col s10 offset-s1">
+                            {{ form_label(form.publicationDate) }}
+                            {{ form_widget(form.publicationDate) }}
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col s5 m4 l3">
+                    <div class="col s12 m4 l3">
                         <a href="{{ path('administration_article_index') }}" class="waves-effect waves-light btn red col s12">Retour</a>
                     </div>
-                    <div class="col s5 m4 l3 right" id="submit">
+                    <div class="col s12 m4 l3 right" id="submit">
                         <input type="submit" class="waves-effect waves-light btn col s12" value="Créer" />                        
                     </div>
                 </div>

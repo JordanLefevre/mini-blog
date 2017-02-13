@@ -12,7 +12,7 @@ use \DateTime;
 /**
  * Article controller.
  *
- * @Route("administration/article")
+ * @Route("administration/article", name="administration_article")
  */
 class ArticleController extends Controller
 {
@@ -48,7 +48,7 @@ class ArticleController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $article->setPublicationDate(new DateTime());
+            $article->setPublicationDate(new DateTime($article->getPublicationDate()));
 
             $em->persist($article);
             $em->flush($article);
@@ -87,13 +87,18 @@ class ArticleController extends Controller
     public function editAction(Request $request, Article $article)
     {
         $deleteForm = $this->createDeleteForm($article);
+
+        $article->setPublicationDate($article->getPublicationDate()->format('j F Y'));
+
         $editForm = $this->createForm('AppBundle\Form\ArticleType', $article);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $article->setPublicationDate(new DateTime($article->getPublicationDate()));
+
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('administration_article_edit', array('id' => $article->getId()));
+            return $this->redirectToRoute('administration_article_show', array('id' => $article->getId()));
         }
 
         return $this->render('article/edit.html.twig', array(

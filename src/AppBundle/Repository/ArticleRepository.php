@@ -10,4 +10,12 @@ namespace AppBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getLastArticles()
+    {
+        $qb = $this->createQueryBuilder('n'); 
+        $qb->orderBy('n.publicationDate', 'DESC')
+           ->setMaxResults(5);
+        return $qb->getQuery()
+                   ->getResult();
+    }
 }

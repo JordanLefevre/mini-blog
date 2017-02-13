@@ -39,12 +39,15 @@ class TagController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $tags = $em->getRepository('AppBundle:Tag')->findAll();
+
         $tag = new Tag();
         $form = $this->createForm('AppBundle\Form\TagType', $tag);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($tag);
             $em->flush($tag);
 
@@ -53,6 +56,7 @@ class TagController extends Controller
 
         return $this->render('tag/new.html.twig', array(
             'tag' => $tag,
+            'tags' => $tags,
             'form' => $form->createView(),
         ));
     }
@@ -88,7 +92,7 @@ class TagController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('administration_tag_edit', array('id' => $tag->getId()));
+            return $this->redirectToRoute('administration_tag_show', array('id' => $tag->getId()));
         }
 
         return $this->render('tag/edit.html.twig', array(

@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Mini-Blog{% endblock %}</title>
+        {% block stylesheets %}       
+            {% stylesheets
+                '@AppBundle/Resources/public/css/materialize.min.css'
+                '@AppBundle/Resources/public/css/jquery-ui.min.css'
+                '@AppBundle/Resources/public/css/public.css'
+                '@AppBundle/Resources/public/css/tinymce-content.css'
+            %}
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <nav>
+            <div class="nav-wrapper">
+                <div class="row">
+                    <a href="/" class="brand-logo">Logo</a>
+                    <form class="col s3 right" style="margin:0;">
+                        <div class="input-field">
+                            <input id="search" type="search" placeholder="Rechercher" required>
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div class="container global">
+            <div class="row">
+                <div class="col s10 offset-s1 z-depth-5" style="background:white; padding:0;">
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+        </div>
+        {% block javascripts %}
+            {% javascripts
+                '@AppBundle/Resources/public/js/jquery.min.js'
+                '@AppBundle/Resources/public/js/jquery-ui.min.js'
+                '@AppBundle/Resources/public/js/materialize.min.js'
+                '@AppBundle/Resources/public/js/script.js'
+            %}
+
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+    </body>
+</html>

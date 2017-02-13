@@ -39,12 +39,14 @@ class CategoryController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('AppBundle:Category')->findAll();
+
         $category = new Category();
         $form = $this->createForm('AppBundle\Form\CategoryType', $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($category);
             $em->flush($category);
 
@@ -53,6 +55,7 @@ class CategoryController extends Controller
 
         return $this->render('category/new.html.twig', array(
             'category' => $category,
+            'categories' => $categories,
             'form' => $form->createView(),
         ));
     }
@@ -88,7 +91,7 @@ class CategoryController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('administration_category_edit', array('id' => $category->getId()));
+            return $this->redirectToRoute('administration_category_show', array('id' => $category->getId()));
         }
 
         return $this->render('category/edit.html.twig', array(

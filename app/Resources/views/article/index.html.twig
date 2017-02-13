@@ -1,34 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Articles list</h1>
-
-    <table>
+    <div class="row form-title"> 
+        <div class="col s12">
+            <h1>Liste des articles</h1>
+        </div>
+    </div>
+    <table class="bordered highlight responsive-table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Content</th>
-                <th>Author</th>
-                <th>Publicationdate</th>
-                <th>Actions</th>
+                <th>Nom</th>
+                <th>Catégorie</th>
+                <th>Auteur</th>
+                <th>Date</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
         {% for article in articles %}
             <tr>
-                <td><a href="{{ path('administration_article_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
+                <td>{{ article.id }}</td>
                 <td>{{ article.name }}</td>
-                <td>{{ article.content }}</td>
+                <td>{{ article.category.name }}</td>
                 <td>{{ article.author }}</td>
-                <td>{% if article.publicationDate %}{{ article.publicationDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if article.publicationDate %}{{ article.publicationDate|date('d-m-Y') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('administration_article_show', { 'id': article.id }) }}">show</a>
+                            <a href="{{ path('administration_article_show', { 'id': article.id }) }}" class="details-button cyan lighten-1 waves-effect waves-light btn col s12">Voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('administration_article_edit', { 'id': article.id }) }}">edit</a>
+                            <a href="{{ path('administration_article_edit', { 'id': article.id }) }}" class="waves-effect waves-light btn col s12">Modifier</a>
                         </li>
                     </ul>
                 </td>
@@ -36,10 +39,7 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('administration_article_new') }}">Create a new article</a>
-        </li>
-    </ul>
+    <div class="col s12 add-button">
+        <a href="{{ path('administration_article_new') }}" class="teal darken-3 waves-effect waves-light btn col s8 offset-s2">Créer un nouvel article</a>
+    </div>
 {% endblock %}

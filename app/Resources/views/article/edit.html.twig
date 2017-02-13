@@ -8,65 +8,67 @@
     </div>
     <div class="row form-content">
         <div class="col s12">
-            {{ form_start(form) }}
+            {{ form_start(edit_form) }}
                 <div class="row">
                     <div class="row">
                         <div class="input-field col s10 offset-s1">
-                            {{ form_row(form.name) }}
+                            {{ form_row(edit_form.name) }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s10 offset-s1">
-                            {{ form_row(form.content) }}
+                            <div class="row" id="content-label">
+                                {{ form_label(edit_form.content) }}
+                            </div>
+                            <div class="row">
+                                {{ form_widget(edit_form.content) }}
+                                {{ form_errors(edit_form.content) }}
+                            </div>                        
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s10 offset-s1">
-                            {{ form_row(form.author) }}
+                            {{ form_row(edit_form.author) }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s10 offset-s1">
-                            {{ form_widget(form.category) }}
-                            {{ form_errors(form.category) }}
-                            {{ form_label(form.category) }}
+                            {{ form_widget(edit_form.category) }}
+                            {{ form_errors(edit_form.category) }}
+                            {{ form_label(edit_form.category) }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s10 offset-s1">
-                            {{ form_widget(form.tags) }}
-                            {{ form_errors(form.tags) }}
-                            {{ form_label(form.tags) }}
+                            {{ form_widget(edit_form.tags) }}
+                            {{ form_errors(edit_form.tags) }}
+                            {{ form_label(edit_form.tags) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s10 offset-s1">
+                            {{ form_label(edit_form.publicationDate) }}
+                            {{ form_widget(edit_form.publicationDate) }}
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col s5 m4 l3" id="submit">
-                        <input type="submit" class="waves-effect waves-light btn col s12" value="Modifier" />
+                <div class="row" style="margin-bottom:0">
+                    <div class="col s12 m4 l2">
+                        <a href="{{ path('administration_article_index') }}" class="waves-effect waves-light btn teal darken-3 col s12">Retour</a>
                     </div>
-                    <div class="col s5 m4 l3">
-                        {{ form_start(delete_form) }}
-                            <input type="submit" value="Supprimer">
-                        {{ form_end(delete_form) }}
-                    </div>
-                    <div class="col s5 m4 l3">
-                        <a href="{{ path('administration_article_index') }}" class="waves-effect waves-light btn red col s12">Retour</a>
+                    <div class="col s12 m8 l4 right" id="submit">   
+                        <input type="submit" class="waves-effect waves-light btn col s12 m6 l5 right" value="Modifier" />               
                     </div>
                 </div>
-            {{ form_end(form) }} 
+            {{ form_end(edit_form) }} 
+            <div class="row">
+                <div class="col s12 m4 l2">
+                    {{ form_start(delete_form) }}
+                        <input type="submit" class="waves-effect waves-light btn col s12 red" value="Supprimer">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
         </div>
     </div>
    {{ tinymce_init() }}
-
-
-    <ul>
-        <li>
-            <a href="{{ path('administration_article_index') }}">Retour à la liste</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
 {% endblock %}

@@ -1,21 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Category edit</h1>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Modifier" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('administration_category_index') }}">Retour à la liste</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="row form-title"> 
+        <div class="col s12">
+            <h1>Modification catégorie</h1>
+        </div>
+    </div>
+    <div class="row form-content">
+        <div class="col s12">
+            {{ form_start(edit_form) }}
+                <div class="row">
+                    <div class="row">
+                        <div class="input-field col s10 offset-s1">
+                            {{ form_row(edit_form.name) }}
+                        </div>
+                    </div>                    
+                </div>
+                <div class="row" style="margin-bottom:0">
+                    <div class="col s12 m4 l2">
+                        <a href="{{ path('administration_category_index') }}" class="waves-effect waves-light btn teal darken-3 col s12">Retour</a>
+                    </div>
+                    <div class="col s12 m8 l4 right" id="submit">   
+                        <input type="submit" class="waves-effect waves-light btn col s12 m6 l5 right" value="Modifier" />               
+                    </div>
+                </div>
+            {{ form_end(edit_form) }}
+            <div class="row">
+                <div class="col s12 m4 l2">
+                    {{ form_start(delete_form) }}
+                        <input type="submit" class="waves-effect waves-light btn col s12 red" value="Supprimer">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

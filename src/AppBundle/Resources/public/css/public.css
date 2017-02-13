@@ -1,0 +1,64 @@
+/*
+ *
+ *  Navbar
+ *
+ */
+nav {
+    background-color:#26a69a;
+}
+
+/*
+ *
+ *  Général
+ *
+ */
+body {
+    font-family: "Century Gothic", CenturyGothic;
+    background-color: rgb(230,230,230);
+    height:100%;
+}
+
+.global {
+    height:100%;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+.global > .row {
+    margin:0;
+}
+
+/*
+ *
+ * Collections
+ *
+ *
+ */
+#lastArticles {
+    margin: 0;
+}
+
+#lastArticles .collection {
+    border:none;
+    margin:0;
+}
+
+#lastArticles .collection-header {
+    background: #1e7068;
+    color: white;
+}
+
+#lastArticles .collection-item {
+    min-height: 200px;
+    position:relative;
+}
+
+#lastArticles .collection-item .secondary-content {
+    position:absolute;
+    top:43%;
+    right:10px;
+}
+
+#lastArticles .title {
+    word-wrap: break-word;
+}
