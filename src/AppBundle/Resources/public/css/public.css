@@ -11,15 +11,6 @@ nav {
     background-color:#ddd;
 }
 
-#mobile-demo #form-search {
-    height:64px;
-    background-color: white;
-}
-
-#form-search i {
-    color: #212121;
-}
-
 li.divider {
     background-color:rgba(0,0,0,0.4);
     margin:0 !important;

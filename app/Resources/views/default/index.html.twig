@@ -3,7 +3,20 @@
 {% block body %}
     <div class="row" id="lastArticles">
         <ul class="collection with-header">
-            <li class="collection-header"><div class="row"><h4 class="col s12 m7 l8">Les derniers articles</h4><a class="waves-effect waves-light btn col s12 m5 l4">Tous les articles</a></div></li>
+            <li class="collection-header">
+                <div class="row">
+                    <h4 class="col s12 m7 l8">Les derniers articles</h4>
+                    <a class="waves-effect waves-light btn col s12 m5 l4">Tous les articles</a>
+                    {{ form_start(form) }}
+                        <div class="input-field col s12">
+                            {{ form_row(form.query) }}
+                        </div>
+                            <div class="col s12 m6 l3 right" id="submit">
+                                <input type="submit" class="waves-effect waves-light btn col s12" value="Chercher" />                        
+                            </div>
+                    {{ form_end(form) }}
+                </div>
+            </li>
             {% for article in lastArticles %}
                 <li class="collection-item">
                     <div class="content-item">

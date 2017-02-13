@@ -20,4 +20,16 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
         return $qb->getQuery()
                    ->getResult();
     }
+
+    public function searchArticleByQuery($query)
+    {
+        $qb = $this->createQueryBuilder('n')
+            ->select('n')
+            ->where('n.name LIKE :query')
+            ->andWhere('n.publicationDate <= :now')
+            ->setParameter('query', '%'.$query.'%')
+            ->setParameter('now', new \DateTime('now'));        
+        return $qb->getQuery()
+                   ->getResult();
+    }
 }
