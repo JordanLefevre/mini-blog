@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="row form-title"> 
+    <div class="row form-title">
         <div class="col s12">
             <h1>Nouvel article</h1>
         </div>
@@ -23,12 +23,7 @@
                             <div class="row">
                                 {{ form_widget(form.content) }}
                                 {{ form_errors(form.content) }}
-                            </div>                        
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s10 offset-s1">
-                            {{ form_row(form.author) }}
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -57,10 +52,10 @@
                         <a href="{{ path('administration_article_index') }}" class="waves-effect waves-light btn red col s12">Retour</a>
                     </div>
                     <div class="col s12 m4 l3 right" id="submit">
-                        <input type="submit" class="waves-effect waves-light btn col s12" value="Créer" />                        
+                        <input type="submit" class="waves-effect waves-light btn col s12" value="Créer" />
                     </div>
                 </div>
-            {{ form_end(form) }} 
+            {{ form_end(form) }}
         </div>
     </div>
    {{ tinymce_init() }}

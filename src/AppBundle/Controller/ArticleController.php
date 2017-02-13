@@ -48,7 +48,10 @@ class ArticleController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+
             $article->setPublicationDate(new DateTime($article->getPublicationDate()));
+            $article->setAuthor($user->getUsername());
 
             $em->persist($article);
             $em->flush($article);

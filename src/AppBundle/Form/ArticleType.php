@@ -25,10 +25,6 @@ class ArticleType extends AbstractType
                     'label'  => 'Contenu',
                     'attr'=> array('class'=>'tinymce')
                 ))
-                ->add('author', TextType::class, array(
-                    'label'  => 'Auteur',
-                    'attr'=> array('class'=>'validate')
-                ))
                 ->add('category',EntityType::class, array(
                   'class' => 'AppBundle:Category',
                   'choice_label' => 'name',
@@ -49,7 +45,7 @@ class ArticleType extends AbstractType
                 ))
         ;
     }
-    
+
     /**
      * {@inheritdoc}
      */
