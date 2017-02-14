@@ -5,16 +5,24 @@
         <ul class="collection with-header">
             <li class="collection-header">
                 <div class="row">
-                    <h4 class="col s12 m7 l8">Les derniers articles</h4>
-                    <a href="{{ path('all_articles', { 'id': 1 }) }}" class="waves-effect waves-light btn col s12 m5 l4">Tous les articles</a>
+                    <h4 class="col s12 m7 l8">Tous les articles</h4>
+                    {% if nbPages > 1 %}
+                        <ul class="pagination" style="text-align:center">
+                            <li class="{% if app.request.get('id') == 1 %}disabled{% else %}waves-effect{% endif %}"><a href="{% if app.request.get('id') != 1 %}{{ path('all_articles', { 'id': app.request.get('id')-1 }) }}{% endif %}"><i class="material-icons">chevron_left</i></a></li>
+                            {% for i in 1.. nbPages %}      
+                                <li class="waves-effect {% if app.request.get('id') == i %}active{% endif %}"><a href="{{ path('all_articles', { 'id': i }) }}">{{i}}</a></li>                      
+                            {% endfor %}
+                            <li class="{% if app.request.get('id') == nbPages %}disabled{% else %}waves-effect{% endif %}"><a href="{% if app.request.get('id') != nbPages %}{{ path('all_articles', { 'id': app.request.get('id')+1 }) }}{% endif %}"><i class="material-icons">chevron_right</i></a></li>
+                        </ul>
+                    {% endif %}
                     {{ form_start(form) }}
                         <div class="input-field col s12 m5 l4">
                             {{ form_row(form.query) }}
                         </div>
                     {{ form_end(form) }}
                 </div>
-            </li>
-            {% for article in lastArticles %}
+            </li>            
+            {% for article in someArticles %}
                 <li class="collection-item">
                     <div class="content-item">
                         <div class="category"><b>{{ article.category.name }}</b></div>

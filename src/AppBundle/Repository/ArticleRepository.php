@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use Doctrine\ORM\Tools\Pagination\Paginator;
+
 /**
  * ArticleRepository
  *
@@ -19,6 +21,31 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
             ->setMaxResults(5);
         return $qb->getQuery()
                    ->getResult();
+    }
+
+    public function getAllArticles()
+    {
+        $qb = $this->createQueryBuilder('n');
+        $qb ->where('n.publicationDate <= :now')
+            ->setParameter('now', new \DateTime('now'))
+            ->orderBy('n.publicationDate', 'DESC');
+        return $qb->getQuery()
+                   ->getResult();
+    }
+
+    public function getSomeArticles($begin_results, $nb_per_page)
+    {
+        $qb = $this->createQueryBuilder('n');
+        $qb
+            ->select('n')
+            ->where('n.publicationDate <= :now')
+            ->setParameter('now', new \DateTime('now'))
+            ->orderBy('n.publicationDate', 'DESC')
+            ->setFirstResult($begin_results)
+            ->setMaxResults($nb_per_page);
+
+        $res = new Paginator($qb);
+        return $res;
     }
 
     public function searchArticleByQuery($query)

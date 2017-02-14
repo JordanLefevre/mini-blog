@@ -98,3 +98,19 @@ body {
 .collection-item .content-item {
     width:93%;
 }
+
+.collection-header .row {
+    margin-bottom:0;
+}
+
+.collection-header .input-field {
+    margin-top:25px;
+}
+
+.collection-header .pagination li:not(:first-child):not(:last-child) a{
+    color:white !important;
+}
+
+.collection-header .pagination .active {
+    background-color:#26a69a !important;
+}
