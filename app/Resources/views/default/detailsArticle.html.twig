@@ -1,0 +1,96 @@
+{% extends 'public.html.twig' %}
+
+{% block body %}
+    <div class="row" id="lastArticles">
+        <ul class="collection with-header">
+            <li class="collection-header">
+                <div class="row">
+                    <a href="{{ path('all_articles', { 'id': 1 }) }}" class="waves-effect waves-light right btn col s12 m5 l4">Tous les articles</a>
+                </div>
+                <div class="row">
+                    <h4>{{article.name}}</h4>
+                </div>
+            </li>
+            <li class="collection-item">
+                <div class="content-item" id="details-article">
+                    <div class="row">
+                        <div class="col s2 m2 l1 category-bar"></div><div class="category" style="font-size:1.8em"><b><a href="/category/{{article.category.id}}">{{ article.category.name }}</a></b></div>
+                    </div>
+                    <div class="row">
+                        <div class="left"><i>Publié le {{ article.publicationDate | date('d/m/Y') }}, par {{ article.author }}</i></div>
+                        <div class="right">{{ nb_comments(article) }} commentaire{% if nb_comments(article) > 1 %}s{% endif %}</div>
+                    </div>
+                    <div class="row">
+                        <div class="divider"></div>
+                    </div>
+                    <div class="content">{{ article.content | raw}}</div>
+                    <div class="row">
+                        <div class="divider"></div>
+                    </div>
+                    <div class="tags">
+                        Tags : 
+                        {% for tag in article.tags %}
+                            <div class="chip">
+                                {{ tag.name }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row">
+                        <div class="comments">
+                            <i class="material-icons">comment</i> <b>{{ nb_comments(article) }} COMMENTAIRE{% if nb_comments(article) > 1 %}S{% endif %}</b>
+                            <div class="row">
+                                <div class="col s12 m5 l3">
+                                    <div class="divider"></div>
+                                </div>
+                            </div>
+                            {{ form_start(form) }}
+                                <div class="row"> 
+                                    <div class="input-field col s12 m4 l3">
+                                        {{ form_row(form.username) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m10 l8">
+                                        {{ form_row(form.content_comment) }}
+                                    </div>                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 m10 l8">
+                                        <input type="submit" class="waves-effect waves-light btn right send-comment" value="Écrire commentaire"/>
+                                    </div>
+                                </div>
+                            {{ form_end(form) }}
+                            <div class="row">
+                                <div class="col s12 m10 l8">
+                                    <div class="divider"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m10 l8">
+                                    {% for comment in comments %}
+                                        <div class="comment">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <b>{{ comment.author }}</b> | {{ comment.publicationDate | date('d/m/Y') }}
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    {{ comment.content }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="divider"></div>
+                                    {% endfor %}
+                                    {% if comments|length == 0 %}
+                                        <div style="text-align:center;">Aucun commentaire pour le moment !</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>                  
+                </div>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

@@ -17,7 +17,7 @@
             {% for article in lastArticles %}
                 <li class="collection-item">
                     <div class="content-item">
-                        <div class="category"><b><a href="/category/{{article.category.id}}">{{ article.category.name }}</a></b></div>
+                        <div class="category"><b><a href="{{ path('category_articles', { 'id': article.category.id }) }}">{{ article.category.name }}</a></b></div>
                         <h5 class="title">{{ article.name }}</h5>
                         <div class="content">{{ article.content | striptags[:300] | raw}}... <a href="#"><i>Voir plus</i></a></div>
                         <div class="tags">
@@ -29,7 +29,7 @@
                         </div>
                         <div><i>Le {{ article.publicationDate | date('d/m/Y') }}, par {{ article.author }}</i></div>
                     </div>
-                    <a href="#!" class="secondary-content">
+                    <a href="{{ path('details_article', { 'id': article.id }) }}" class="secondary-content">
                         <i class="material-icons tooltipped"  data-position="right" data-delay="20" data-tooltip="Voir l'article">send</i>
                     </a>
                 </li>

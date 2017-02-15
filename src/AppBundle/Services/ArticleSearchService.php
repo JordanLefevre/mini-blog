@@ -17,13 +17,5 @@
             ->getRepository('AppBundle:Article')
             ->searchArticleByQuery($query);
         }
-
-        public function getNbComments($id)
-        {
-            return $this
-            ->doctrine
-            ->getRepository('AppBundle:Article')
-            ->getNbComments($id);
-        }
     }
 ?>

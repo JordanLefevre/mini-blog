@@ -6,6 +6,7 @@
             <li class="collection-header">
                 <div class="row">
                     <h4 class="col s12 m7 l8">{{ category.name }}</h4>
+                    <a href="{{ path('all_articles', { 'id': 1 }) }}" class="waves-effect waves-light btn col s12 m5 l4">Tous les articles</a>
                 </div>
             </li>
             {% for article in categoryArticles %}
@@ -21,9 +22,9 @@
                                 </div>
                             {% endfor %}
                         </div>
-                        <div><i>Le {{ article.publicationDate | date('d/m/Y') }}, par {{ article.author }} ({{ nb_comments(article.id) }} commentaire{% if nb_comments(article.id) > 1 %}s{% endif %})</i></div>
+                        <div><i>Le {{ article.publicationDate | date('d/m/Y') }}, par {{ article.author }}</i> <b>({{ nb_comments(article) }} commentaire{% if nb_comments(article) > 1 %}s{% endif %})</b></div>
                     </div>
-                    <a href="#!" class="secondary-content">
+                    <a href="{{ path('details_article', { 'id': article.id }) }}" class="secondary-content">
                         <i class="material-icons tooltipped"  data-position="right" data-delay="20" data-tooltip="Voir l'article">send</i>
                     </a>
                 </li>

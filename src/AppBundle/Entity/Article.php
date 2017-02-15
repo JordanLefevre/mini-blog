@@ -68,7 +68,7 @@ class Article
 
     /**
      * Many Articles have Many Comments.
-     * @ORM\ManyToMany(targetEntity="Comment")
+     * @ORM\ManyToMany(targetEntity="Comment", orphanRemoval=true)
      * @ORM\JoinTable(name="articles_comments",
      *      joinColumns={@ORM\JoinColumn(name="article_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="comment_id", referencedColumnName="id")}

@@ -99,6 +99,10 @@ body {
     width:93%;
 }
 
+#details-article {
+    width:100% !important;
+}
+
 .collection-header .row {
     margin-bottom:0;
 }
@@ -113,4 +117,19 @@ body {
 
 .collection-header .pagination .active {
     background-color:#26a69a !important;
+}
+
+.category-bar {
+    margin-top:4px;
+    margin-right:15px;
+    height:14px;
+    background-color: #26a69a;
+}
+
+.comments {
+    margin-top:50px;
+}
+
+.send-comment input {
+    line-height:36px !important;
 }
