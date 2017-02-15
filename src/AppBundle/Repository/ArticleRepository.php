@@ -55,7 +55,19 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
             ->where('n.name LIKE :query')
             ->andWhere('n.publicationDate <= :now')
             ->setParameter('query', '%'.$query.'%')
-            ->setParameter('now', new \DateTime('now'));        
+            ->setParameter('now', new \DateTime('now'));
+        return $qb->getQuery()
+                   ->getResult();
+    }
+
+    public function getCategoryArticles($category)
+    {
+        $qb = $this->createQueryBuilder('n')
+            ->select('n')
+            ->where('n.category = :category')
+            ->andWhere('n.publicationDate <= :now')
+            ->setParameter('category', $category)
+            ->setParameter('now', new \DateTime('now'));
         return $qb->getQuery()
                    ->getResult();
     }

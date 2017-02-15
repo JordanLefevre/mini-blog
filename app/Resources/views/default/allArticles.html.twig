@@ -9,8 +9,8 @@
                     {% if nbPages > 1 %}
                         <ul class="pagination" style="text-align:center">
                             <li class="{% if app.request.get('id') == 1 %}disabled{% else %}waves-effect{% endif %}"><a href="{% if app.request.get('id') != 1 %}{{ path('all_articles', { 'id': app.request.get('id')-1 }) }}{% endif %}"><i class="material-icons">chevron_left</i></a></li>
-                            {% for i in 1.. nbPages %}      
-                                <li class="waves-effect {% if app.request.get('id') == i %}active{% endif %}"><a href="{{ path('all_articles', { 'id': i }) }}">{{i}}</a></li>                      
+                            {% for i in 1.. nbPages %}
+                                <li class="waves-effect {% if app.request.get('id') == i %}active{% endif %}"><a href="{{ path('all_articles', { 'id': i }) }}">{{i}}</a></li>
                             {% endfor %}
                             <li class="{% if app.request.get('id') == nbPages %}disabled{% else %}waves-effect{% endif %}"><a href="{% if app.request.get('id') != nbPages %}{{ path('all_articles', { 'id': app.request.get('id')+1 }) }}{% endif %}"><i class="material-icons">chevron_right</i></a></li>
                         </ul>
@@ -21,11 +21,11 @@
                         </div>
                     {{ form_end(form) }}
                 </div>
-            </li>            
+            </li>
             {% for article in someArticles %}
                 <li class="collection-item">
                     <div class="content-item">
-                        <div class="category"><b>{{ article.category.name }}</b></div>
+                        <div class="category"><b><a href="/category/{{article.category.id}}">{{{ article.category.name }}</a></b></div>
                         <h5 class="title">{{ article.name }}</h5>
                         <div class="content">{{ article.content | striptags[:300] | raw}}... <a href="#"><i>Voir plus</i></a></div>
                         <div class="tags">

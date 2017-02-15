@@ -273,4 +273,3 @@ class Article
         $this->comments->removeElement($comment);
     }
 }
-

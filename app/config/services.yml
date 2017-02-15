@@ -7,3 +7,8 @@ services:
     app.article_search_service:
         class: AppBundle\Services\ArticleSearchService
         arguments: ['@doctrine']
+    app.twig_extension:
+        class: AppBundle\Twig\ArticleCommentsExtension
+        public: false
+        tags:
+            - { name: twig.extension }

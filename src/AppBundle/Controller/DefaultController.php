@@ -77,4 +77,19 @@ class DefaultController extends Controller
             'nbPages' => $nbPages
         ));
     }
+
+    /**
+     * @Route("/category/{id}", name="category_articles")
+     */
+    public function categoryArticlesAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $category = $em->getRepository('AppBundle:Category')->findById($request->get('id'));
+        $categoryArticles = $em->getRepository('AppBundle:Article')->getCategoryArticles($category[0]);
+
+        return $this->render('default/categoryArticles.html.twig', array(
+            'category' => $category[0],
+            'categoryArticles' => $categoryArticles
+        ));
+    }
 }

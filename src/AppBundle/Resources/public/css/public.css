@@ -22,7 +22,7 @@ li.divider {
  *
  */
 body {
-    font-family: "Century Gothic", CenturyGothic;
+    font-family: "Century Gothic", CenturyGothic, sans-serif;
     background-color: rgb(230,230,230);
     height:100%;
 }
@@ -81,8 +81,8 @@ body {
     color:#26a69a;
 }
 
-#lastArticles .category {
-    color: #26a69a;
+#lastArticles .category, .category a{
+    color: #26a69a !important;
     font-size:1.1em;
 }
 

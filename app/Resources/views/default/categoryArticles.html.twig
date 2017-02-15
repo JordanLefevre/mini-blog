@@ -5,19 +5,13 @@
         <ul class="collection with-header">
             <li class="collection-header">
                 <div class="row">
-                    <h4 class="col s12 m7 l8">Les derniers articles</h4>
-                    <a href="{{ path('all_articles', { 'id': 1 }) }}" class="waves-effect waves-light btn col s12 m5 l4">Tous les articles</a>
-                    {{ form_start(form) }}
-                        <div class="input-field col s12 m5 l4">
-                            {{ form_row(form.query) }}
-                        </div>
-                    {{ form_end(form) }}
+                    <h4 class="col s12 m7 l8">{{ category.name }}</h4>
                 </div>
             </li>
-            {% for article in lastArticles %}
+            {% for article in categoryArticles %}
                 <li class="collection-item">
                     <div class="content-item">
-                        <div class="category"><b><a href="/category/{{article.category.id}}">{{ article.category.name }}</a></b></div>
+                        <div class="category"><b>{{ article.category.name }}</b></div>
                         <h5 class="title">{{ article.name }}</h5>
                         <div class="content">{{ article.content | striptags[:300] | raw}}... <a href="#"><i>Voir plus</i></a></div>
                         <div class="tags">
@@ -27,7 +21,7 @@
                                 </div>
                             {% endfor %}
                         </div>
-                        <div><i>Le {{ article.publicationDate | date('d/m/Y') }}, par {{ article.author }}</i></div>
+                        <div><i>Le {{ article.publicationDate | date('d/m/Y') }}, par {{ article.author }} ({{ nb_comments(article.id) }} commentaire{% if nb_comments(article.id) > 1 %}s{% endif %})</i></div>
                     </div>
                     <a href="#!" class="secondary-content">
                         <i class="material-icons tooltipped"  data-position="right" data-delay="20" data-tooltip="Voir l'article">send</i>
